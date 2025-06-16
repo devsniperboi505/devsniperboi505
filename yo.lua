@@ -2,4 +2,4 @@ testy {
 	yo = "gurt"
 	gurt = "yo"
 }
-print(gurt
+print(gurt, yo)
