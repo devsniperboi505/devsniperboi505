@@ -1,5 +1,4 @@
-testy {
-	yo = "gurt"
-	gurt = "yo"
-}
+testy{}
+testy.gurt = "yo"
+tes
 print(testy.gurt, testy.yo)
