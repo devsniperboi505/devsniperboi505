@@ -1,4 +1,5 @@
 local testy = "hey"
 local testygurt = "yo"
 local testyyo = "gurt"
-local print(testy, testygurt, testyyo )
+local print(testyyo)
+emd
