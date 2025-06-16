@@ -1,4 +1,4 @@
-testy{}
+testy
 testy.gurt = "yo"
-tes
+testy.yo = gurt
 print(testy.gurt, testy.yo)
