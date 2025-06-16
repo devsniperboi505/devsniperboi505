@@ -1,4 +1,4 @@
 local testy = "hey"
-local testy.gurt = "yo"
-local testy.yo = "gurt"
-local print(testy, testy.gurt, testy.yo)
+local testygurt = "yo"
+local testyyo = "gurt"
+local print(testy, testygurt, testyyo )
