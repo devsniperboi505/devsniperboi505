@@ -1,8 +1,14 @@
+love.graphics.setDefaultFilter("nearest", "nearest")
 -- love gmae configure
 function love.conf(t)
  t.version = "0.9.2"
  t.console = false
 end
+function love.keypressed(key)
+ if key == "W" then
+  playerpress = 's'
+ elseif key == 'a' then
+  playerpress = 
  -- Require the console script and assign it to a variable.
 local console = require("loveconsole")
 
@@ -26,7 +32,7 @@ local sheet
 local Idle
 
 local playerx = 100
-local playery = 100
+local playery = 100"W"
 local playerXspeed = 4
 local playerYjump = 5
 local playerW = false
@@ -45,8 +51,7 @@ function love.update(dt)
 end
 
 function love.draw()
-    love.graphics.draw(sheet, Idle, playerx, playery, nil, 10, 10)
     console.draw()
     opt.apply()
-    Print("gurt do yo see me yo?")
+    love.graphics.draw(sheet, Idle, playerx, playery, nil, 10, 10)
 end
