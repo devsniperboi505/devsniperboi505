@@ -40,10 +40,17 @@ function love.load()
 end
 
 function love.update(dt)
+ if player.speed => player.limit then
+  player.speed = 6.9
+  elseif player.speed <= 0 then
+   player.speed = 0
+  end
  if love.keyboard.isDown('d') then
   player.x = player.x + player.speed
  elseif love.keyboard.isDown('a') then
   player.x = player.x - player.speed
+ else 
+  player.x = player.x - player.reduce
  end
 end
 
