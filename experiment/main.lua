@@ -21,6 +21,33 @@ function love.resize(w, h)
 	-- [Resize the console if the window is resized.]
 	console.resize(w, h)
 end
+function love.load()
+	--This is one way of making a button. You can make it however you want, even use pre-made libraries
+	myButton = {
+		x = 10, y = 10, image = love.graphics.newImage("myButton.png"), clicked = false
+	}
+	
+	--This is just an easy way to know the pop-up image and where to draw it. Change to whatever you want
+	myImage = {
+		x = 0, y = 16, image = love.graphics.newImage("player.png")
+	}
+end
+
+function love.draw()
+	love.graphics.draw(myButton.image, myButton.x, myButton.y) --This is where we draw your button
+	
+	if myButton.clicked then --If the person clicked the button, this will be true
+		love.graphics.draw(myImage.image, myImage.x, myImage.y) --This is where we draw the pop-up image
+	end
+end
+
+function love.mousepressed(x, y, button)
+	if button == 1 then --Left click
+		if x >= button.x and x <= button.x+button.image:getWidth() and y >= button.y and y <= button.y+button.image:getHeight() then --Detect if the click was inside the button
+			button.clicked = true --This is what triggers the pop-up image
+		end
+	end
+end
 --                 start her to code
 opt = require("settings")
 local sheet
@@ -35,9 +62,7 @@ function love.load()
     print("yo")
     sheet = love.graphics.newImage("sprite/player.png")
     Idle = love.graphics.newQuad(0, 0, 16, 16, sheet:getDimensions())
-    if button.xpressed then
-     print("SYBAU </3")
-    end
+    
 end
 
 function love.update(dt)
