@@ -28,7 +28,7 @@ local Idle
 local player = {
     x = 100,
     y = 100,
-    speed = 1,
+    speed = 7,
     limit = 19,
     reduce = 3.5
 }
