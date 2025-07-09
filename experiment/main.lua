@@ -26,11 +26,11 @@ opt = require("settings")
 local sheet
 local Idle
 local player = {
- x = 100
- y = 100
- speed = 0.1
- limit = 7
- reduce 0.2
+    x = 100,
+    y = 100,
+    speed = 1,
+    limit = 19,
+    reduce = 3.5
 }
 function love.load()
     print("yo")
@@ -40,22 +40,18 @@ function love.load()
 end
 
 function love.update(dt)
- if player.speed => player.limit then
-  player.speed = 6.9
-  elseif player.speed <= 0 then
-   player.speed = 0
-  end
+ anyDown = love.keyboard.isDown( "a", "d", "s", 'a')
  if love.keyboard.isDown('d') then
   player.x = player.x + player.speed
  elseif love.keyboard.isDown('a') then
   player.x = player.x - player.speed
- else 
-  player.x = player.x - player.reduce
+ elseif player.speed > player.limit then
+  player.speed = player.reduce
  end
 end
 
 function love.draw()
     console.draw()
     opt.apply()
-    love.graphics.draw(sheet, Idle, playerx, playery, nil, 10, 10)
+    love.graphics.draw(sheet, Idle, player.x, player.y, nil, 10, 10)
 end
