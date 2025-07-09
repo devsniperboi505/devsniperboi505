@@ -5,10 +5,13 @@ function love.conf(t)
  t.console = false
 end
 function love.keypressed(key)
- if key == "W" then
-  playerpress = 's'
+ local playerpress = ''
+ if key == "d" then
+  playerpress = 'd'
  elseif key == 'a' then
-  playerpress = 
+  playerpress = 'a'
+ end
+end
  -- Require the console script and assign it to a variable.
 local console = require("loveconsole")
 
@@ -32,10 +35,9 @@ local sheet
 local Idle
 
 local playerx = 100
-local playery = 100"W"
+local playery = 100
 local playerXspeed = 4
 local playerYjump = 5
-local playerW = false
 
 function love.load()
     print("yo")
@@ -44,10 +46,11 @@ function love.load()
 end
 
 function love.update(dt)
-    playerW = love.keyboard.isDown("w")
-    if playerW then
-        playerx = playerx + playerXspeed
-    end
+ if love.keyboard.isDown('d') then
+  playerx = playerx + playerXspeed
+ elseif love.keyboard.isDown('a') then
+  playerx = playerx - playerXspeed
+ end
 end
 
 function love.draw()
