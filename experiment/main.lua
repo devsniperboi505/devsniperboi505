@@ -1,18 +1,10 @@
 love.graphics.setDefaultFilter("nearest", "nearest")
--- love gmae configure
+--                 love gmae configure
 function love.conf(t)
  t.version = "0.9.2"
  t.console = false
 end
-function love.keypressed(key)
- local playerpress = ''
- if key == "d" then
-  playerpress = 'd'
- elseif key == 'a' then
-  playerpress = 'a'
- end
-end
- -- Require the console script and assign it to a variable.
+ --             function configuration zone.
 local console = require("loveconsole")
 
 function love.keypressed(key)
@@ -29,7 +21,7 @@ function love.resize(w, h)
 	-- [Resize the console if the window is resized.]
 	console.resize(w, h)
 end
--- start her to code
+--                 start her to code
 opt = require("settings")
 local sheet
 local Idle
@@ -43,6 +35,9 @@ function love.load()
     print("yo")
     sheet = love.graphics.newImage("sprite/player.png")
     Idle = love.graphics.newQuad(0, 0, 16, 16, sheet:getDimensions())
+    if button.xpressed then
+     print("SYBAU </3")
+    end
 end
 
 function love.update(dt)

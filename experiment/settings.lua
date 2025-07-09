@@ -2,7 +2,7 @@
 
 local settings = {}
 
-settings.potato_mode = false
+settings.potato_mode = true
 settings.resolution_width = 800
 settings.resolution_height = 600
 settings.fullscreen_enabled = false
