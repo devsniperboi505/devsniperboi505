@@ -23,37 +23,9 @@ function love.load()
 			console.print("Hey there!")
 		end
 	end, "Greets you in a non rude way - Arguments: [person to say hello to]")
-	local player = {
-    x = 100,
-    y = 100,
-    velocity = 0,
-    maxSpeed = 1100,
-    boostPerPress = 350,
-    friction = 5000
-    }
 end
 
--- function code zone (you can code her)
-function love.keypressed(key)
-    console.keypressed(key)
-    if key == "d" then
-        isDHeld = true
-        player.velocity = math.min(player.velocity + player.boostPerPress, player.maxSpeed)
-    end
-end
 
-local sheet
-local Idle
-local idle2
-
-
-local isDHeld = false
-
-function love.keyreleased(key)
-    if key == "d" then isDHeld = false end
-end
-
-function love.load()
     print("yo")
     sheet = love.graphics.newImage("sprite/player.png")
     Idle = love.graphics.newQuad(0, 0, 16, 16, sheet:getDimensions())

@@ -1,41 +1,8 @@
--- main.lua
- -- Require the console script and assign it to a variable.
-local console = require("loveconsole")
-
-
-
-function love.keypressed(key)
-	-- [Handle key presses and then pass these on to the console.]
-	console.keypressed(key)
-end
-
-function love.textinput(t)
-	-- [Receive text input and pass it on to the console.]
-	console.textinput(t)
-end
-
-function love.resize(w, h)
-	-- [Resize the console if the window is resized.]
-	console.resize(w, h)
-end
-
-function love.keypressed(key)
-	console.keypressed(key) -- Pass pressed keys to the console.
-end
-
-function love.textinput(t)
-	console.textinput(t) -- Send text input to the console.
-end
-
-function love.resize(w, h)
-	console.resize(w, h) -- Resize the console if the window is resized.
-end
-
 -- plugins zone
 love.graphics.setDefaultFilter("nearest", "nearest")
 
 function love.conf(t)
-    t.version = "0.10.0"
+    t.version = "0.9.2"
     t.console = true
 end
 
@@ -93,6 +60,7 @@ function love.draw()
     opt.apply()
     love.graphics.draw(sheet, Idle, player.x, player.y, nil, 3, 3)
     print("yo")
+    
 end
 
 
