@@ -32,7 +32,8 @@ function settings.apply()
         })
         love.timer.step()
     else 
-    	settings.msaa 
+    	settings.msaa = 1
+    	settings.resize = true
     end
 end
 

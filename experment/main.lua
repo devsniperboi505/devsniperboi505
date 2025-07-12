@@ -28,7 +28,7 @@ end
 
 
 
-opt = require("settings")
+opt = require("config/settings")
 
 local sheet
 local Idle
@@ -56,12 +56,32 @@ function love.update(dt)
 end
 
 function love.draw()
-	console.draw()
     opt.apply()
     love.graphics.draw(sheet, Idle, player.x, player.y, nil, 3, 3)
-    print("yo")
-    
+end
+-- main.lua
+local Console = require("console")
+
+function love.load()
+    console = Console:new()
+    _G.console = console
+    console:print("Console ready.")
 end
 
+function love.draw()
+    console:draw()
+end
+
+function love.update(dt)
+    console:update(dt)
+end
+
+function love.touchpressed(id, x, y, dx, dy, pressure)
+    console:touchpressed(x, y, id)
+end
+
+function love.touchreleased(id, x, y, dx, dy, pressure)
+    console:touchreleased(x, y, id)
+end
 
 
