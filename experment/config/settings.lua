@@ -7,7 +7,8 @@ settings.resolution_width = 800
 settings.resolution_height = 600
 settings.fullscreen_enabled = false
 settings.vsync = false
-
+settings.msaa = 0
+settings.resize = false
 function settings.apply()
     -- Nearest neighbor for pixel sprites
     love.graphics.setDefaultFilter("nearest", "nearest")
@@ -23,13 +24,15 @@ function settings.apply()
 
     -- Apply potato mode settings
     if settings.potato_mode then
+    	setting.vsync = false
         settings.resolution_width = 800
         settings.resolution_height = 600
         love.window.setMode(settings.resolution_width, settings.resolution_height, {
-            fullscreen = settings.fullscreen_enabled,
-            vsync = false
+            fullscreen = settings.fullscreen_enabled
         })
         love.timer.step()
+    else 
+    	settings.msaa 
     end
 end
 
