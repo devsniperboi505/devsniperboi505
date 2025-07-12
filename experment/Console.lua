@@ -1,5 +1,8 @@
 -- console.lua
 local Console = {}
+Console.__index = Console
+
+local consoleInstance = nil -- internal instance reference
 
 function Console:new(font)
     local obj = {
@@ -10,8 +13,10 @@ function Console:new(font)
         scrollOffset = 0,
         panelHeight = 200,
         touchStartY = nil,
+        visible = false,
     }
     setmetatable(obj, Console)
+    consoleInstance = obj -- store instance globally
     return obj
 end
 
@@ -24,6 +29,8 @@ function Console:print(msg)
 end
 
 function Console:draw()
+    if not self.visible then return end
+
     love.graphics.setFont(self.font)
     local screenW, screenH = love.graphics.getDimensions()
     local panelY = screenH - self.panelHeight
@@ -65,14 +72,30 @@ function Console:touchreleased(x, y, id)
     self.touchStartY = nil
 end
 
--- Hook global print to use console.print
+function Console:keypressed(key)
+    if key == "f9" then
+        self.visible = not self.visible
+    end
+end
+
+-- Hook global print to use consoleInstance
 local old_print = print
 function print(...)
     old_print(...)
-    if _G.console and _G.console.print then
+    if consoleInstance and consoleInstance.print then
         local str = table.concat({...}, " ")
-        _G.console:print(str)
+        consoleInstance:print(str)
     end
 end
+
+-- Define console global with log()
+_G.console = {
+    log = function(...)
+        if consoleInstance and consoleInstance.print then
+            local str = table.concat({...}, " ")
+            consoleInstance:print(str)
+        end
+    end
+}
 
 return Console
