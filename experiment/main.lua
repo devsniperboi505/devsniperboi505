@@ -15,7 +15,7 @@ local player = {
     velocity = 0,
     maxSpeed = 1100,
     boostPerPress = 350,
-    friction = 1000
+    friction = 5000
 }
 
 -- function code zone (you can code her)
@@ -39,7 +39,7 @@ opt = require("settings")
 
 local sheet
 local Idle
-
+local idle2
 
 
 local isDHeld = false
@@ -55,9 +55,7 @@ function love.load()
 end
 
 function love.update(dt)
-    if isDHeld then
-        -- No continuous acceleration, per keypress boost only
-    else
+    if isDHeld == false then
         player.velocity = math.max(0, player.velocity - player.friction * dt)
     end
 
@@ -67,7 +65,7 @@ end
 function love.draw()
     console.draw()
     opt.apply()
-    love.graphics.draw(sheet, Idle, player.x, player.y, nil, 10, 10)
+    love.graphics.draw(sheet, Idle, player.x, player.y, nil, 3, 3)
     love.graphics.print("Velocity: " .. string.format("%.2f", player.velocity), 10, 10)
 end
 
