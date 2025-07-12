@@ -24,7 +24,7 @@ function settings.apply()
 
     -- Apply potato mode settings
     if settings.potato_mode then
-    	setting.vsync = false
+    	settings.vsync = false
         settings.resolution_width = 800
         settings.resolution_height = 600
         love.window.setMode(settings.resolution_width, settings.resolution_height, {

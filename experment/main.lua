@@ -12,17 +12,15 @@ local player = {
     x = 100,
     y = 100,
     velocity = 0,
-    maxSpeed = 1100,
+    maxSpeed = 900,
     boostPerPress = 350,
     friction = 5000
 }
 
 -- function code zone (you can code her)
 function love.keypressed(key)
-    console.keypressed(key)
     if key == "d" then
-        isDHeld = true
-        player.velocity = math.min(player.velocity + player.boostPerPress, player.maxSpeed)
+    	isDheld = true
     end
 end
 
@@ -38,7 +36,9 @@ local idle2
 local isDHeld = false
 
 function love.keyreleased(key)
-    if key == "d" then isDHeld = false end
+    if key == "d" then 
+		isDHeld = false
+	end
 end
 
 function love.load()
@@ -48,43 +48,14 @@ function love.load()
 end
 
 function love.update(dt)
-    if isDHeld == false then
-        player.velocity = math.max(0, player.velocity - player.friction * dt)
+	if isDheld then
+		player.velocity = math.min(player.velocity + player.boostPerPress, player.maxSpeed)
+	else
+    	player.x = player.x + player.velocity * dt
     end
-
-    player.x = player.x + player.velocity * dt
 end
 
 function love.draw()
     opt.apply()
     love.graphics.draw(sheet, Idle, player.x, player.y, nil, 3, 3)
 end
--- main.lua
-local Console = require("Console")
-
-function love.load()
-    console = Console.new()
-    _G.console = console
-    console.print("Console ready.")
-end
-
-function love.draw()
-    console.draw()
-end
-
-function love.update(dt)
-    console.update(dt)
-end
-
-function love.touchpressed(id, x, y, dx, dy, pressure)
-    console.touchpressed(x, y, id)
-end
-
-function love.touchreleased(id, x, y, dx, dy, pressure)
-    console.touchreleased(x, y, id)
-end
-function love.keypressed(key)
-	Console:keypressed(key)
-end
-
-
