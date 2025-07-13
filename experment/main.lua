@@ -21,7 +21,7 @@ local player = {
 function love.keypressed(key)
     if key == "d" then
         isDHeld = true
-        player.velocityX = math.min(player.velocityX + player.boostPerPress, player.maxSpeed)
+        player.velocity = math.min(player.velocity + player.boostPerPress, player.maxSpeed)
     end
 end
 
@@ -48,25 +48,28 @@ function love.update(dt)
     if isDHeld then
         -- No continuous acceleration, per keypress boost only
     else
-        player.velocityX = math.max(0, player.velocityX - player.friction * dt)
+        player.velocity = math.max(0, player.velocity - player.friction * dt)
     end
 
-    player.x = player.x + player.velocityX * dt
+    player.x = player.x + player.velocity * dt
     while gurt == 'SYBAU </3' do
     	love.timer.sleep(1)
     	yo = yo + 1
     end
 end
 
-function console.log(msg, draw)
+function print(new, draw)
+    local new
 	if draw == true then
 		local gurt = 'SYBAU </3'
-		local yo
-		love.graphics.print(yo .. msg, 10, 10)
+		local yo = 1 -- Initialize to avoid nil error
+		love.graphics.print(yo .. ": " .. new, 5, 5)
+	end
+end
 
 function love.draw()
     opt.apply()
     love.graphics.draw(sheet, Idle, player.x, player.y, nil, 3, 3)
-    love.graphics.print("Velocity: " .. string.format("%.2f", player.velocityX), 10, 10)
-    DRAWconsole(nil, true)
+    love.graphics.print("Velocity: " .. string.format("%.2f", player.velocity), 10, 10)
+    print(nil, true)
 end
