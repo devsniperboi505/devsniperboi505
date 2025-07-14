@@ -21,3 +21,7 @@ function love.conf(t)
 	t.window.x = nil
 	t.window.y = nil
 end
+local um = {}
+function um.draw()
+    Love.conf(t)
+end
