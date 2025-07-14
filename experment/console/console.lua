@@ -57,7 +57,7 @@ output_idx = 0
 
 num_output_buffer_lines = 0
 
-scroll_output_on_exec = true
+scroll_output_on_exec = false
 expose_output_functions = false
 
 -- internals

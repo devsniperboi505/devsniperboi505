@@ -1,11 +1,6 @@
 -- plugins zone
 love.graphics.setDefaultFilter("nearest", "nearest")
-
-function love.conf(t)
-    t.version = "0.9.2"
-    t.console = true
-end
-
+local console_toggle = require("console/console")
 
 -- varible zone
 local player = {
@@ -50,9 +45,7 @@ function love.update(dt)
     else
         player.velocity = math.max(0, player.velocity - player.friction * dt)
     end
-
     player.x = player.x + player.velocity * dt
-    end
 end
 
 function love.draw()
