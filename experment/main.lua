@@ -81,15 +81,9 @@ end
 
 function love.draw()
     opt.apply()
-
     -- draw player with sprite sheet quad
     love.graphics.draw(sheet, Idle, player.x, player.y, 0, 3, 3)
 
     -- debug velocity
     love.graphics.print("Vertical Velocity: " .. string.format("%.2f", vy), 10, 10)
-
-    -- draw ground
-    love.graphics.setColor(1, 1, 1, 0.2)
-    love.graphics.rectangle("fill", ground.x, ground.y, ground.w, ground.h)
-    love.graphics.setColor(1, 1, 1, 1)
 end
