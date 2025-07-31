@@ -10,18 +10,6 @@ settings.vsync = false
 settings.msaa = 0
 settings.resize = false
 function settings.apply()
-    -- Nearest neighbor for pixel sprites
-    love.graphics.setDefaultFilter("nearest", "nearest")
-
-    -- Detect OpenGL version (fallback method for 0.9.2)
-    local _, version = love.graphics.getRendererInfo()
-    print("Renderer Version:", version)
-
-    -- Extract version number from string
-    local major, minor = version:match("OpenGL (%d)%.(%d)")
-    major = tonumber(major)
-    minor = tonumber(minor)
-
     -- Apply potato mode settings
     if settings.potato_mode then
     	settings.vsync = false

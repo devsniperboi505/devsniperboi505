@@ -1,8 +1,9 @@
-t1 = require("settings")
-function love.conf(t)
+local loveconfig = {}
+t1 = require("config/settings")
+function loveconfig.draw(t)
 	t.identity = nil
 	t.version = "0.10.0"
-	t.console = true
+	t.console = false
 	t.accelerometerjoystick = true
 	t.gammacorrect = false
 
@@ -21,7 +22,5 @@ function love.conf(t)
 	t.window.x = nil
 	t.window.y = nil
 end
-local um = {}
-function um.draw()
-    Love.conf(t)
-end
+
+return loveconfig

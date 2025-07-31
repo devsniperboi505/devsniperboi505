@@ -11,11 +11,11 @@ config.enabled = true -- If true the user is able to show/hide the console.
 config.alert = true -- If true the console will display a widget on warnings and errors.
 
 config.echoLine = true -- print entered line to console
-config.inputChar = "" -- Characters displayed at the start of the input line.
+config.inputChar = ">" -- Characters displayed at the start of the input line.
 config.scrollChar = "..." -- Scroll handle characters.
 config.cursorSpeed = 1.5 -- Speed at which the cursor blinks.
 config.fontName = "" -- Filename of the font to be used. Leave it blank to use the default font.
-config.fontSize = 20 -- Size of the console font.
+config.fontSize = 10 -- Size of the console font.
 config.consoleMarginEdge = 5 -- Left border margin of the console text.
 config.consoleMarginTop = 0 -- Top border margin of the console text.
 config.lineSpacing = 4 -- Space between individual lines.
@@ -28,7 +28,7 @@ config.sizeMin = 5 -- Minimum lines the console should display before extending 
 config.sizeMax = 10 -- Maximum number of entries to print at a time.
 config.shiftAmount = 1 -- Amount of lines to move over while scrolling up and down.
 
-config.keys.toggle = "f9" -- Key used to toggle the console during runtime.
+config.keys.toggle = "f10" -- Key used to toggle the console during runtime.
 config.keys.scrollUp = "pageup" -- Key used to scroll up within the console's message stack.
 config.keys.scrollDown = "pagedown" -- Key used to scroll down within the console's message stack.
 config.keys.scrollTop = "home" -- Key used to move to the top of the stack.
