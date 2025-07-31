@@ -6,7 +6,7 @@ local opt = require('config/settings')
 local player = require("object/player")
 log = require("plugin/mug")
 piefiller = require("plugin/piefiller")
-Pie = piefiller:new()
+pie = piefiller:new()
 --[[
 log.trace(...)
 log.debug(...)
@@ -27,15 +27,14 @@ function love.update(dt)
 end
 function love.draw()
   pie:attach()
-  console.draw()
 	player.draw()
-	Pie:draw()
   pie:detach()
 end
 
 function love.keypressed(key)
- 	Pie:keypressed(key)
+ 	pie:keypressed(key)
 end
 function love.mousepressed(...)
- 	Pie:mousepressed(...)
+ 	pie:mousepressed(...)
 end
+
