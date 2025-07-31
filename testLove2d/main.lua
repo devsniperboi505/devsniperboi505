@@ -19,7 +19,7 @@ log.fatal(...)
 ]]
 
 function love.load()
-  log.outfile = "log.txt"
+  log.level("debug")
   player.load()
   log.debug("hi")
 end
