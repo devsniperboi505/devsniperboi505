@@ -19,17 +19,9 @@ log.fatal(...)
 ]]
 
 function love.load()
-  -- Log to a file
   log.outfile = "log.txt"
   player.load()
-  log.info('welcome to game engine love2d lightweight framework lua game engine if you want this log sytle go to https://github.com/rxi/log.lua and download')
-  log.dedug('yogurt')
-end
-
--- Custom output function
-log.out = function(str)
-  -- Custom handling of log string
-  my_custom_log_handler(str)
+  log.debug("hi")
 end
 
 function love.update(dt)
