@@ -1,5 +1,3 @@
--- main.lua
-
 local pieChartVisible = false  -- Initially, the pie chart is hidden
 love.graphics.setDefaultFilter("nearest", "nearest") -- make sure add this for blur the pixel to unblur
 local bump = require('plugin/bump')
@@ -9,17 +7,10 @@ local player = require("object/player")
 log = require("plugin/mug")
 piefiller = require("plugin/piefiller")
 pie = piefiller:new()
---[[
-log.trace(...)
-log.debug(...)
-log.info(...)
-log.warn(...)
-log.error(...)
-log.fatal(...)
-]]
+
+local drawPIE = false  -- Moved this to the top level scope
 
 function love.load()
-  local drawPIE = false
   log.level = "trace"
   player.load()
   log.trace("hi")
@@ -30,23 +21,25 @@ function love.update(dt)
   player.control(dt)
   pie:detach()
 end
+
 function love.draw()
   log.trace("hi")
   pie:attach()
-	player.draw()
+  player.draw()
   pie:detach()
   if drawPIE then
-    pie:draw
-    return
+    pie:draw()  -- Added parentheses here
   end
+  -- Removed the unnecessary return statement
 end
 
 function love.mousepressed(...)
- 	pie:mousepressed(...)
+  pie:mousepressed(...)
 end
 
 function love.keypressed(key)
   pie:keypressed(key)
   if key == "f9" then
-    drawPIE = true
+    drawPIE = not drawPIE  -- Changed to toggle instead of just setting to true
+  end
 end
