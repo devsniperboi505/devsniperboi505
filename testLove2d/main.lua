@@ -19,9 +19,10 @@ log.fatal(...)
 ]]
 
 function love.load()
-  log.level("debug")
+  local drawPIE = false
+  log.level = "trace"
   player.load()
-  log.debug("hi")
+  log.trace("hi")
 end
 
 function love.update(dt)
@@ -30,27 +31,22 @@ function love.update(dt)
   pie:detach()
 end
 function love.draw()
+  log.trace("hi")
   pie:attach()
 	player.draw()
   pie:detach()
-    if pieChartVisible then
-        drawPieChart() -- This is the crucial part: draw ONLY if visible
-    end
+  if drawPIE then
+    pie:draw
+    return
+  end
 end
 
 function love.mousepressed(...)
  	pie:mousepressed(...)
 end
 
-local pieChartVisible = false
-
 function love.keypressed(key)
   pie:keypressed(key)
-    if key == "f9" then
-        pieChartVisible = not pieChartVisible
-    end
-end
-
-local function drawPieChart()
-  pie:draw()
+  if key == "f9" then
+    drawPIE = true
 end
