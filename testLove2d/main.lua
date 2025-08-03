@@ -9,10 +9,8 @@ pie = piefiller:new()
 local drawPIE = false  -- Moved this to the top level scope
 -- function zone
 function love.load()
-  profiler:addMessage("Your information message", LoveProfiler.LOG_INFO)
-  log.level = "trace"
+  lovebird.wrapprint = true
   player.load()
-  log.trace("hi")
 end
 
 function love.update(dt)
