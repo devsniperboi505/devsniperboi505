@@ -1,4 +1,3 @@
-local pieChartVisible = false  -- Initially, the pie chart is hidden
 love.graphics.setDefaultFilter("nearest", "nearest") -- make sure add this for blur the pixel to unblur
 local bump = require('plugin/bump')
 local loveconfig = require('config/loveconfig')
@@ -7,9 +6,9 @@ local player = require("object/player")
 log = require("plugin/mug")
 piefiller = require("plugin/piefiller")
 pie = piefiller:new()
-
+-- varible zone
 local drawPIE = false  -- Moved this to the top level scope
-
+-- function zone
 function love.load()
   log.level = "trace"
   player.load()
@@ -28,6 +27,7 @@ function love.draw()
   player.draw()
   pie:detach()
   if drawPIE then
+    love.graphics.print(tostring(love.timer.getFPS( )), 1, 1, nil, 1.3, 1.3)
     pie:draw()  -- Added parentheses here
   end
   -- Removed the unnecessary return statement

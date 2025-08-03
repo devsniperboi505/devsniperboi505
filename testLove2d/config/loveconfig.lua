@@ -2,12 +2,12 @@ local loveconfig = {}
 t1 = require("config/settings")
 function loveconfig.draw(t)
 	t.identity = nil
-	t.version = "0.10.0"
+	t.version = "0.9.2"
 	t.console = false
 	t.accelerometerjoystick = true
 	t.gammacorrect = false
 
-	t.window.title = "iceness platform: prototype 0.0.01"
+	t.window.title = "iceness platform"
 	t.window.icon = nil
 	t.window.width = 800
 	t.window.height = 600

@@ -1,0 +1,39 @@
+-- piefiller plugins key
+increase_depth = "down", 
+decrease_depth = "up",
+increase_step_size = ",",
+decrease_step_size = ".",
+shorten_names = "s",
+show_hidden = "c",
+save_to_file = "p",
+-- configure optimize
+settings.potato_mode -- enable optimize mode
+settings.resolution[] -- add [1] is for width and [2] is for height and set the screen resolution
+settings.fullscreen -- set them as fullscreen on game
+settings.vsync -- if you want look smooth no cut frame try enable vync not recommend to low end pc until 120hz
+settings.msaa -- set any number of times of anilise such like 1 is 1x msaa or 2 is 2x msaa until 8 but not recccoment for set 8 msaa but the defualt is 0
+settings.resize -- if you want resize on window then enable this 
+-- LoveProfiler
+  -- so all that on start loveprofile require this if you want show the profiler try draw from "profiler:start()" and by doing from love.load function with inside code it was configure
+local LoveProfiler = require("loveprofiler")
+function love.load()
+  profiler = LoveProfiler:new{config = {
+    driver = "console",
+    font_size = 17,
+    draw_x = 400,
+    color = {0, 0, 1, 1}
+  }}
+end
+
+function love.draw()
+  profiler:start()
+end
+-- print message
+local LoveProfiler = require("loveprofiler")
+
+function love.load()
+  profiler = LoveProfiler:new()
+  profiler:addMessage("Your information message", LoveProfiler.LOG_INFO)
+  profiler:addMessage("Your warning message", LoveProfiler.LOG_WARN)
+  profiler:addMessage("Your error message", LoveProfiler.LOG_ERROR)
+end

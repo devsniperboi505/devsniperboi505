@@ -3,9 +3,10 @@
 local settings = {}
 
 settings.potato_mode = true
-settings.resolution_width = 800
-settings.resolution_height = 600
-settings.fullscreen_enabled = false
+settings.resolution = {800, 600}
+settings.resolution_width = settings.resolution[1]
+settings.resolution_height = settings.resolution[2]
+settings.fullscreen = false
 settings.vsync = false
 settings.msaa = 0
 settings.resize = false
@@ -16,7 +17,7 @@ function settings.apply()
         settings.resolution_width = 800
         settings.resolution_height = 600
         love.window.setMode(settings.resolution_width, settings.resolution_height, {
-            fullscreen = settings.fullscreen_enabled
+            fullscreen = settings.fullscreen
         })
         love.timer.step()
     else 
