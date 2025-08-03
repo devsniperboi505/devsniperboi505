@@ -10,6 +10,7 @@ pie = piefiller:new()
 local drawPIE = false  -- Moved this to the top level scope
 -- function zone
 function love.load()
+  
   log.level = "trace"
   player.load()
   log.trace("hi")
