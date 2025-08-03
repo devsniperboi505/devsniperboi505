@@ -3,14 +3,13 @@ local bump = require('plugin/bump')
 local loveconfig = require('config/loveconfig')
 local opt = require('config/settings')
 local player = require("object/player")
-log = require("plugin/mug")
-piefiller = require("plugin/piefiller")
+  piefiller = require("plugin/piefiller")
 pie = piefiller:new()
 -- varible zone
 local drawPIE = false  -- Moved this to the top level scope
 -- function zone
 function love.load()
-  
+  profiler:addMessage("Your information message", LoveProfiler.LOG_INFO)
   log.level = "trace"
   player.load()
   log.trace("hi")
@@ -23,7 +22,6 @@ function love.update(dt)
 end
 
 function love.draw()
-  log.trace("hi")
   pie:attach()
   player.draw()
   pie:detach()
