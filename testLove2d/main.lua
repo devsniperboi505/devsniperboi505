@@ -14,12 +14,14 @@ function love.load()
 end
 
 function love.update(dt)
+  require("lovebird").update()
   pie:attach()
   player.control(dt)
   pie:detach()
 end
 
 function love.draw()
+  require("lovebird").update()
   pie:attach()
   player.draw()
   pie:detach()
