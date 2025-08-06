@@ -1,3 +1,4 @@
+-- load plugin zone
 love.graphics.setDefaultFilter("nearest", "nearest") -- make sure add this for blur the pixel to unblur
 local bump = require('plugin/bump')
 local loveconfig = require('config/loveconfig')
@@ -9,7 +10,9 @@ pie = piefiller:new()
 local drawPIE = false  -- Moved this to the top level scope
 -- function zone
 function love.load()
+  require("lovebird").update()
   lovebird.wrapprint = true
+  print("yo")
   player.load()
 end
 
