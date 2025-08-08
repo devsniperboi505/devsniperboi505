@@ -24,7 +24,6 @@ function love.update(dt)
 end
 
 function love.draw()
-  require("lovebird").update()
   pie:attach()
   player.draw()
   pie:detach()
