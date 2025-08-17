@@ -1,6 +1,6 @@
 local loveconfig = {}
 t1 = require("config/t1")
-t2 = require("config/settingLITE.lua")
+t2 = require("config/settingLITE")
 function loveconfig.draw(t)
 	t.identity = t2.identity
 	t.version = t2.version
