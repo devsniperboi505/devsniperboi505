@@ -1,37 +1,45 @@
 -- load plugin zone
 love.graphics.setDefaultFilter("nearest", "nearest") -- make sure add this for blur the pixel to unblur
 local bump = require('plugin/bump')
-local loveconfig = require('config/loveconfig')
-local opt = require('config/settings')
+local loveconfig = require('config/settingLITE')
+local t = require('config/t1')
+local opt = require('config/settingLITE')
 local player = require("object/player")
   piefiller = require("plugin/piefiller")
+local dedug = require("plugin/lovedebug.lua")
 pie = piefiller:new()
 -- varible zone
 local drawPIE = false  -- Moved this to the top level scope
 -- function zone
+
 function love.load()
-  require("lovebird").update()
-  lovebird.wrapprint = true
+  settings.enableplugin(love.graphics.getWidth(), love.graphics.getHeight())
+  t.apply()
   print("yo")
   player.load()
 end
 
 function love.update(dt)
-  require("lovebird").update()
+  t.enableplugin()
   pie:attach()
   player.control(dt)
   pie:detach()
 end
 
+function love.resize(w, h)
+  t.resize(w, h)
+end
+
 function love.draw()
+  t.start()
   pie:attach()
   player.draw()
   pie:detach()
   if drawPIE then
     love.graphics.print(tostring(love.timer.getFPS( )), 1, 1, nil, 1.3, 1.3)
-    pie:draw()  -- Added parentheses here
+    pie:draw()  
   end
-  -- Removed the unnecessary return statement
+  t.ends()
 end
 
 function love.mousepressed(...)

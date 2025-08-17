@@ -1,26 +1,27 @@
 local loveconfig = {}
-t1 = require("config/settings")
+t1 = require("config/t1")
+t2 = require("config/settingLITE.lua")
 function loveconfig.draw(t)
-	t.identity = nil
-	t.version = "0.9.2"
-	t.console = false
-	t.accelerometerjoystick = true
-	t.gammacorrect = false
+	t.identity = t2.identity
+	t.version = t2.version
+	t.console = t2.console
+	t.accelerometerjoystick = t2.accelerometerjoystick
+	t.gammacorrect = t2.gammacorrect
 
-	t.window.title = "iceness platform"
-	t.window.icon = nil
-	t.window.width = 800
-	t.window.height = 600
-	t.window.borderless = false
-	t.window.resizable = t1.resize
-	t.window.minwidth = 640
-	t.window.minheight = 480
-	t.window.vsync = t1.vsync
-	t.window.msaa = t1.msaa
-	t.window.display = 1
-	t.window.highdpi = false
-	t.window.x = nil
-	t.window.y = nil
+	t.window.title = t2.title
+	t.window.icon = t2.icon
+	t.window.width = t2.width
+	t.window.height = t2.height
+	t.window.borderless = t2.borderless
+	t.window.resizable = t2.resize
+	t.window.minwidth = t2.minwidth
+	t.window.minheight = t2.minwidth
+	t.window.vsync = t2.vsync
+	t.window.msaa = t2.msaa
+	t.window.display = t2.display
+	t.window.highdpi = t2.highdpi
+	t.window.x = t2.windowX
+	t.window.y = t2.windowY
 end
 
 return loveconfig
