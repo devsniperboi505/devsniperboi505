@@ -6,7 +6,7 @@ local t = require('config/t1')
 local opt = require('config/settingLITE')
 local player = require("object/player")
   piefiller = require("plugin/piefiller")
-local dedug = require("plugin/lovedebug.lua")
+local dedug = require("plugin/lovedebug")
 pie = piefiller:new()
 -- varible zone
 local drawPIE = false  -- Moved this to the top level scope
