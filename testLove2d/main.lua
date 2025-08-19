@@ -6,7 +6,7 @@ local t = require('config/t1')
 local opt = require('config/settingLITE')
 local player = require("object/player")
   piefiller = require("plugin/piefiller")
-local dedug = require("plugin/lovedebug")
+local log = require("plugin/lovedebug")
 pie = piefiller:new()
 -- varible zone
 local drawPIE = false  -- Moved this to the top level scope
@@ -47,8 +47,9 @@ function love.mousepressed(...)
 end
 
 function love.keypressed(key)
-  pie:keypressed(key)
+  log.key(key)
   if key == "f9" then
     drawPIE = not drawPIE  -- Changed to toggle instead of just setting to true
+    pie:keypressed(key)
   end
 end
