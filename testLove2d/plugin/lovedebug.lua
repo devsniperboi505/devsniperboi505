@@ -19,7 +19,6 @@ logdev.colors = {
 -- Add message to log
 function logdev.print(msg, level)
     logdev.yeezus = logdev.yeezus + 1
-    Logdev.t = level
     level = level or "normal"
     table.insert(logdev.logs, {text = tostring(msg), level = level})
 
@@ -31,21 +30,20 @@ end
 
 -- Toggle visibility with a key
 function logdev.key(key)
-    if key == "f3" then -- F3 like Minecraft debug
+    if key == "f9" then -- F3 like Minecraft debug
         logdev.visible = not logdev.visible
     end
 end
 
 -- Draw logs
 function logdev.draw()
-    if not logdev.visible then return end
     love.graphics.setFont(logdev.font)
 
     local y = 10
     for _, log in ipairs(logdev.logs) do
         local color = logdev.colors[log.level] or logdev.colors.normal
         love.graphics.setColor(color)
-        love.graphics.print("[" .. logdev.t .. "]" .. log.text, 10, y)
+        love.graphics.print(log.text, 10, y)
         y = y + logdev.font:getHeight()
     end
 

@@ -13,6 +13,8 @@ local drawPIE = false  -- Moved this to the top level scope
 -- function zone
 
 function love.load()
+  love.keypressed("f9")
+  log.print("yo", "dedug")
   t.enableplugin(love.graphics.getWidth(), love.graphics.getHeight())
   t.draw()
   print("yo")
@@ -20,7 +22,6 @@ function love.load()
 end
 
 function love.update(dt)
-  t.enableplugin()
   pie:attach()
   player.control(dt)
   pie:detach()
@@ -31,14 +32,14 @@ function love.resize(w, h)
 end
 
 function love.draw()
-  log.draw()
   t.start()
   pie:attach()
   player.draw()
   pie:detach()
   if drawPIE then
     love.graphics.print(tostring(love.timer.getFPS( )), 1, 1, nil, 1.3, 1.3)
-    pie:draw()  
+    pie:draw()
+    log.draw()
   end
   t.ends()
 end
@@ -48,7 +49,6 @@ function love.mousepressed(...)
 end
 
 function love.keypressed(key)
-  Key = "f9"
   log.key(key)
   if key == "f9" then
     drawPIE = not drawPIE  -- Changed to toggle instead of just setting to true
