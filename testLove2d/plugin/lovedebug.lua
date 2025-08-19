@@ -33,7 +33,7 @@ local _Debug = {
 	keyRepeatDelay = 0.4,
 
 	liveOutput='',
-	liveLastModified= love.filesystem.getInfo("main.lua").modtime,
+	liveLastModified= love.filesystem.exists("main.lua"),
 	liveDo=false
 }
 
