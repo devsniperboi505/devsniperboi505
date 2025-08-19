@@ -6,7 +6,7 @@ logdev.font = love.graphics.newFont(14)
 logdev.visible = false
 logdev.maxLogs = math.floor(love.graphics.getHeight() / logdev.font:getHeight()) - 1
 logdev.logs = {}
-Logdev.yeezus = 0
+logdev.yeezus = 0
 
 -- Colors for different log levels
 logdev.colors = {
