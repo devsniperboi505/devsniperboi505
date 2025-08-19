@@ -13,8 +13,8 @@ local drawPIE = false  -- Moved this to the top level scope
 -- function zone
 
 function love.load()
+  log.updateScreenLimit()
   love.keypressed("f9")
-  log.print("yo", "dedug")
   t.enableplugin(love.graphics.getWidth(), love.graphics.getHeight())
   t.draw()
   print("yo")
@@ -49,9 +49,12 @@ function love.mousepressed(...)
 end
 
 function love.keypressed(key)
-  log.key(key)
   if key == "f9" then
     drawPIE = not drawPIE  -- Changed to toggle instead of just setting to true
     pie:keypressed(key)
   end
+end
+
+function print(msg)
+  log.print(msg)
 end
