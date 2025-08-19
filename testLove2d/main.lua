@@ -13,6 +13,7 @@ local drawPIE = false  -- Moved this to the top level scope
 -- function zone
 
 function love.load()
+  log.draw()
   log.updateScreenLimit()
   love.keypressed("f9")
   t.enableplugin(love.graphics.getWidth(), love.graphics.getHeight())
@@ -37,9 +38,9 @@ function love.draw()
   player.draw()
   pie:detach()
   if drawPIE then
+    log.toggle()
     love.graphics.print(tostring(love.timer.getFPS( )), 1, 1, nil, 1.3, 1.3)
     pie:draw()
-    log.draw()
   end
   t.ends()
 end
