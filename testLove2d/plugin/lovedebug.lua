@@ -6,6 +6,7 @@ logdev.font = love.graphics.newFont(14)
 logdev.visible = false
 logdev.maxLogs = math.floor(love.graphics.getHeight() / logdev.font:getHeight()) - 1
 logdev.logs = {}
+Logdev.yeezus = 0
 
 -- Colors for different log levels
 logdev.colors = {
@@ -17,6 +18,7 @@ logdev.colors = {
 
 -- Add message to log
 function logdev.print(msg, level)
+    Logdev.t = level
     level = level or "normal"
     table.insert(logdev.logs, {text = tostring(msg), level = level})
 
@@ -42,12 +44,17 @@ function logdev.draw()
     for _, log in ipairs(logdev.logs) do
         local color = logdev.colors[log.level] or logdev.colors.normal
         love.graphics.setColor(color)
-        love.graphics.print(log.text, 10, y)
+        love.graphics.print(logdev.t .. ": " ..  .. log.text, 10, y)
         y = y + logdev.font:getHeight()
     end
 
     -- reset color
     love.graphics.setColor(1, 1, 1)
+end
+
+function logdev.draw()
+  love.timer.sleep(1)
+  logdev.yeezus = logdev.yeezus + 1
 end
 
 return logdev
